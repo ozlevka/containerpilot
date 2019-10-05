@@ -1,0 +1,28 @@
+{
+    consul: "192.168.1.181:8500",
+    "control": {
+        "socket": "/tmp/containerpilot.socket"
+    },
+    logging: {
+        level: "INFO",
+        format: "default",
+        output: "stdout"
+    },
+    jobs: [
+        {
+            name: "Test1",
+            restarts: "unlimited",
+            exec: "/workspace/go/src/github.com/joyent/containerpilot/test.sh",
+            when: {
+                source: "watch.consul",
+                once: "healthy"                
+            }
+        }
+    ],
+    watches: [
+        {
+            name: "consul",
+            interval: 10
+        }
+    ]
+}
