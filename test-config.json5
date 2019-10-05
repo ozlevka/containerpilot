@@ -1,5 +1,5 @@
 {
-    consul: "192.168.1.181:8500",
+    consul: "consul:8500",
     "control": {
         "socket": "/tmp/containerpilot.socket"
     },
